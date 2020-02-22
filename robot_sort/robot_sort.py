@@ -100,6 +100,7 @@ class SortingRobot:
         
         # Bubble Sort
         for _ in range(int(len(self._list)/2)+1):
+
             # bubble the largest number to the right
             while self.can_move_right():
                 if self.compare_item() is None or self.compare_item() == -1: 
@@ -126,7 +127,7 @@ if __name__ == "__main__":
     robot.sort()
     print('\n', robot._list)
     print(f'\nLength of list: {len(robot._list)}, Sorting time: {robot._time}')
-    print(f'\nCurrent item: {robot._item}, current position: {robot._position}')
+    print(f'Current item: {robot._item}, current position: {robot._position}\n')
 
 
 ### python test_robot.py
