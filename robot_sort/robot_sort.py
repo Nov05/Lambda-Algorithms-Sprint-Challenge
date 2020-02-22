@@ -97,9 +97,24 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        
+        # Bubble Sort
+        for _ in range(int(len(self._list)/2)+1):
+            # bubble the largest number to the right
+            while self.can_move_right():
+                if self.compare_item() is None or self.compare_item() == -1: 
+                    self.swap_item()
+                self.move_right()
 
+            # bubble the smallest number to the left
+            while self.can_move_left():
+                if self.compare_item() == 1:
+                    self.swap_item()
+                self.move_left()
 
+            self.swap_item() 
+        
+            
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
@@ -109,4 +124,17 @@ if __name__ == "__main__":
     robot = SortingRobot(l)
 
     robot.sort()
-    print(robot._list)
+    print('\n', robot._list)
+    print(f'\nLength of list: {len(robot._list)}, Sorting time: {robot._time}')
+    print(f'\nCurrent item: {robot._item}, current position: {robot._position}')
+
+
+### python test_robot.py
+### Ran 5 tests in 0.043s
+
+'''
+1. Quick Sort, Merge Sort, Insertion Sorting... O(n * log(n)); Bubble Sort... O(n^2)
+   https://colab.research.google.com/drive/18LaoQ5r675j8v7UtsfF0GDnAn8revyzq
+2. The robot has exactly one bit of memory: its light. Why is this important? 
+   So it is scalable (is able to handle long lists) without memory limit.
+'''
